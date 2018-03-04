@@ -1,14 +1,14 @@
 # Jekyll configuration
 
-name: Blog Name
+name: liush79's blog
 description: Software Developer
 
 # Url is currently only used only for the RSS feed in feed.xml
-url: http://streetturtle.github.io
+url: https://liush79.github.io
 #url: http://localhost:4000
 
 # For a project page here should be a project name. Otherwise (for user's/organization's page leave it empty)
-baseurl: '/jekyll-clean-dark'
+baseurl: '/'
 
 share:
   facebook: true
@@ -19,7 +19,7 @@ share:
   email: true
 
 social:
-  github: streetturtle
+  github: liush79
   stackoverflow: ''
   linkedin:
   instagram: ''
@@ -38,7 +38,7 @@ yandex_metrica:
 disqus: streetturtle
 comments: false
 
-permalink: /:year/:month/:title
+permalink: /:year/:month/:title.html
 
 # Enable for using pages, more details are here: http://jekyllrb.com/docs/pagination/
 #paginate: 3

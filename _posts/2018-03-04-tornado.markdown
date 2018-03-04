@@ -1,0 +1,66 @@
+---
+layout: post
+title: "tornado test"
+date: "2018-03-04 14:32:51 +0900"
+---
+## 비동기 처리
+* 뭔가 비동기 처리할 일이 있어서 찾아보니 tornado 랑 gevent 얘기가 나오길래 한번 찾아봄. 
+
+## prerequisite
+{% highlight bash %}
+    pip install tornado
+{% endhighlight %}
+
+## example
+{% highlight python %}
+import tornado.ioloop
+import tornado.web
+
+from tornado.httpclient import AsyncHTTPClient
+from tornado import gen
+
+urls = ['http://www.google.com', 'http://www.yandex.ru', 'http://www.python.org']
+
+
+class AsyncTest(tornado.web.RequestHandler):
+    def get(self):
+        for url in urls:
+            print ("call: %s_111" % url)
+            self.fetch_coroutine(url)
+            print ("call: %s_444" % url)
+        self.write('async_test')
+
+    @gen.coroutine
+    def fetch_coroutine(self, url):
+        http_client = AsyncHTTPClient()
+        print ('%s_222' % url)
+        response = yield http_client.fetch(url)
+        print ('%s_333' % url)
+        # In Python versions prior to 3.3, returning a value from
+        # a generator is not allowed and you must use
+        #   raise gen.Return(response.body)
+        # instead.
+        # return response.body
+        raise gen.Return(response.body)
+
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello, world")
+
+
+def make_app():
+    return tornado.web.Application([
+        (r"/", MainHandler),
+        (r"/async_test/", AsyncTest),
+    ])
+
+
+if __name__ == "__main__":
+    app = make_app()
+    app.listen(8888)
+    tornado.ioloop.IOLoop.current().start()
+
+# http://localhost:8888/
+# http://localhost:8888/async_test/
+{% endhighlight %}
