@@ -8,7 +8,7 @@ date: "2018-03-04 14:32:51 +0900"
 
 ## prerequisite
 {% highlight bash %}
-    pip install tornado
+pip install tornado
 {% endhighlight %}
 
 ## example
@@ -25,17 +25,17 @@ urls = ['http://www.google.com', 'http://www.yandex.ru', 'http://www.python.org'
 class AsyncTest(tornado.web.RequestHandler):
     def get(self):
         for url in urls:
-            print ("call: %s_111" % url)
+            print("call: %s_111" % url)
             self.fetch_coroutine(url)
-            print ("call: %s_444" % url)
+            print("call: %s_444" % url)
         self.write('async_test')
 
     @gen.coroutine
     def fetch_coroutine(self, url):
         http_client = AsyncHTTPClient()
-        print ('%s_222' % url)
+        print('%s_222' % url)
         response = yield http_client.fetch(url)
-        print ('%s_333' % url)
+        print('%s_333' % url)
         # In Python versions prior to 3.3, returning a value from
         # a generator is not allowed and you must use
         #   raise gen.Return(response.body)
