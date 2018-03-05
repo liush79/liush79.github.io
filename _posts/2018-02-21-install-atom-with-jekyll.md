@@ -2,6 +2,7 @@
 layout: post
 title: Install Atom with jekyll
 date: 2018-02-21
+tags: jekyll atom
 comments: true
 ---
 ## atom.io 설치

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[ubuntu] virtualbox"
+tags: virtualbox
 date: "2018-02-23 23:49:51 +0900"
 ---
 

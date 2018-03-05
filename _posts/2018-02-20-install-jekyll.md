@@ -3,6 +3,7 @@ layout: post
 title: Install jekyll
 date:   2018-02-20 
 description: Install jekyll ..
+tags: jekyll
 comments: true
 ---
 
