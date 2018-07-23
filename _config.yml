@@ -1,7 +1,7 @@
 # Jekyll configuration
 
-name: liush79's blog
-description: Software Developer
+name: liush79 blog <img src="https://www.codewars.com/users/seungho.ryu/badges/small">
+description:
 
 # Url is currently only used only for the RSS feed in feed.xml
 url: https://liush79.github.io
