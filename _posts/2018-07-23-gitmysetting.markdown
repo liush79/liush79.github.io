@@ -85,3 +85,11 @@ cd git-2.12.0
 make -j8
 sudo make install
 ```
+
+## git https 사용시 캐시하는법
+```
+git config --global credential.helper cache
+```
+* 윈도우에서는 winstore 라는 것을 설치해야한다고 함. (해보진 않음)
+* https://github.com/anurse/git-credential-winstore/downloads
+* 설치 후 위 명령어 다시 실행.
