@@ -62,7 +62,7 @@ Server: Docker Engine - Community
 ```
 
 ### 이거 아직 안해봄. 해봐야지
-* 백업 후 복구
+* docker에 있는 mysql 백업 후 복구
 ```{.bash}
 # Backup
 docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql
