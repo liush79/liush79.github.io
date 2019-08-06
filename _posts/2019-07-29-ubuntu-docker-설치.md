@@ -70,3 +70,14 @@ docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > back
 # Restore
 cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
 ```
+
+### 최근 특이한 현상을 겪어서 적어둠.
+* 우분투 18.04.3 LTS 버전이었는데 버전문제인지 .. 뭔지 모르겠음.
+* 맨위의 스크립트를 사용해서 설치하는데 실패함
+* 실패하는 이유를 다 파악해보고 clean 후 재설치.. 별거 다해봤지만 안됨.
+* 원인 파악해보니 (/var/log/syslog 를 확인 하고 알게됨) 이용할수 있는 network이 없다고 오류 나고 있음.
+* 인터넷 뒤져보니 수동으로 network interface를 생성하는 방법으로 해결할수 있다고 해서 해보니까 됨.
+```{.bash}
+* sudo ip link add name docker0 type bridge
+* sudo ip addr add dev docker0 172.17.0.1/16   # IP 대역은 docker 에서 사용하는 IP 대역을 써야함.
+```
