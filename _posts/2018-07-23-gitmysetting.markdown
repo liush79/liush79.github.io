@@ -65,6 +65,13 @@ git config --global user.email "seungho.ryu@MYMAIL.com"
 git config --global user.name "Seungho Ryu"
 ```
 
+## git 잘못 올라간 파일 삭제
+```shell script
+# 원격에 있는 파일을 삭제한다.
+# 로컬에 있는 파일은 삭제하지 않는다.
+$ git rm --cached [File Name]
+```
+
 ## git stash
 * git stash 명령어들
 
